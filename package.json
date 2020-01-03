@@ -1,0 +1,10 @@
+{
+  "name": "Chatnel-server",
+  "version": "1.0.0",
+  "description": "backend API server for Chatnel",
+  "main": "index.js",
+  "repository": "https://github.com/hmy3743/Chatnel-server.git",
+  "author": "myHan",
+  "license": "NONE",
+  "private": true
+}
