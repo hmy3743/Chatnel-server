@@ -6,5 +6,8 @@
   "repository": "https://github.com/hmy3743/Chatnel-server.git",
   "author": "myHan",
   "license": "NONE",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
 }
