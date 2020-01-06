@@ -1,0 +1,6 @@
+syntax = "proto3";
+message Message {
+    string owner = 1;
+    string content = 2;
+    string type = 3;
+}
