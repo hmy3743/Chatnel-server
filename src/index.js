@@ -1,7 +1,7 @@
 'use strict';
 const Message = require('./protobuf/message_pb').Message;
 const Express = require('express');
-const Https = require('https');
+const Http = require('http');
 const WebSocket = require('ws');
 const FileSystem = require('fs');
 const app = Express();
@@ -10,17 +10,15 @@ app.use(function (req, res) {
     res.send({ msg: 'hello' });
 });
 
-const server = Https.createServer({
-    key: FileSystem.readFileSync('key.pem'),
-    cert: FileSystem.readFileSync('cert.pem'),
-    passphrase: 'pass'
-}, app);
+const server = Http.createServer(app);
 
 const wss = new WebSocket.Server({ server })
 wss.on('connection', function connection(socket) {
     socket.on('message', function incoming(bytes) {
         const message = Message.deserializeBinary(bytes);
         const type = message.getType();
+
+        console.log(`${message.getType()}, ${message.getOwner()}, ${message.getContent()}`)
 
         if(typeof this.mapping == 'undefined'){
             this.mapping = new Map()
