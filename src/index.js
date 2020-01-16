@@ -14,11 +14,12 @@ const server = Http.createServer(app);
 
 const wss = new WebSocket.Server({ server })
 wss.on('connection', function connection(socket) {
+    console.log(`new connection: ${socket}`)
     socket.on('message', function incoming(bytes) {
         const message = Message.deserializeBinary(bytes);
         const type = message.getType();
 
-        console.log(`${message.getType()}, ${message.getOwner()}, ${message.getContent()}`)
+        console.log(`${message.getType()}, ${message.getOwner()}, ${message.getContent()}, ${message.getUid()}`)
 
         if(typeof this.mapping == 'undefined'){
             this.mapping = new Map()

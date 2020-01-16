@@ -68,7 +68,8 @@ proto.Message.toObject = function(includeInstance, msg) {
   var f, obj = {
     owner: jspb.Message.getFieldWithDefault(msg, 1, ""),
     content: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 3, "")
+    type: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    uid: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -117,6 +118,10 @@ proto.Message.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setType(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -164,6 +169,13 @@ proto.Message.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getUid();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -221,6 +233,24 @@ proto.Message.prototype.getType = function() {
  */
 proto.Message.prototype.setType = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string uid = 4;
+ * @return {string}
+ */
+proto.Message.prototype.getUid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.Message} returns this
+ */
+proto.Message.prototype.setUid = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
