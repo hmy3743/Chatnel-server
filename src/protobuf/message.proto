@@ -4,4 +4,5 @@ message Message {
     string content = 2;
     string type = 3;
     string uid = 4;
+    string guid = 5;
 }

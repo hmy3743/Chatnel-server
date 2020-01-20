@@ -69,7 +69,8 @@ proto.Message.toObject = function(includeInstance, msg) {
     owner: jspb.Message.getFieldWithDefault(msg, 1, ""),
     content: jspb.Message.getFieldWithDefault(msg, 2, ""),
     type: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    uid: jspb.Message.getFieldWithDefault(msg, 4, "")
+    uid: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    guid: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -121,6 +122,10 @@ proto.Message.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setUid(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGuid(value);
       break;
     default:
       reader.skipField();
@@ -176,6 +181,13 @@ proto.Message.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getGuid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -251,6 +263,24 @@ proto.Message.prototype.getUid = function() {
  */
 proto.Message.prototype.setUid = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string guid = 5;
+ * @return {string}
+ */
+proto.Message.prototype.getGuid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.Message} returns this
+ */
+proto.Message.prototype.setGuid = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

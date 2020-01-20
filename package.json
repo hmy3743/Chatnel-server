@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "firebase-admin": "^8.9.1",
     "google-protobuf": "^3.11.2",
+    "uuid": "^3.4.0",
     "ws": "^7.2.1"
   }
 }
